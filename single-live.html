@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/single-videos.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:17 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
@@ -13,6 +14,7 @@
     <!-- Favicon -->
     <script src="https://kit.fontawesome.com/c94e0dd92b.js" crossorigin="anonymous"></script>
 
+
     <link rel="shortcut icon" href="images/Games Live copy.png">
     <!-- CSS bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -20,9 +22,22 @@
     <link rel="stylesheet" href="css/style.css" />
     <!--  Responsive -->
     <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="https://vjs.zencdn.net/5.11.7/video-js.css">
+
+    <link rel="stylesheet" href="./css/live.css">
+
+    <script src="https://vjs.zencdn.net/5.11.7/video.js"></script>
+    <script
+        src="https://rawgit.com/kmoskwiak/videojs-resolution-switcher/dev/lib/videojs-resolution-switcher.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.6.0/videojs-contrib-hls.js"></script>
 </head>
 
 <body>
+    <script src="./js/livequality.js"></script>
+    <script src="./js/getdatafromtoken.js"></script>
+    <script src="./js/singlelive.js"></script>
+
+
 
     <!--=========== Loader =============-->
     <div id="gen-loading">
@@ -31,6 +46,13 @@
         </div>
     </div>
     <!--=========== Loader =============-->
+    <!-- Here a loader is created which
+			loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
     <!--========== Header ==============-->
     <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
@@ -40,41 +62,42 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="#">
-                                <img class="img-fluid logo"  src="images/Games Live TXTLEFT .png" style="width:210px;height:65px" alt="streamlab-image">
+                                <img class="img-fluid logo" src="images/Games Live TXTLEFT .png"
+                                    style="width:210px;height:65px" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                     <ul id="gen-main-menu" class="navbar-nav ml-auto">
-                                       <li class="menu-item active">
-                                          <a href="index.html" aria-current="page">Home</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="video-infinite-scroll.html">Videos</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="live-infinite-scroll.html">Lives</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="Category-infinite-scroll.html">Category</a>
-                                         
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="#">About Us</a>
-                                          <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                          <ul class="sub-menu">
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="blog-right-sidebar.html">Blog</a>
-                                             </li>
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="pricing-style-1.html">Q&A</a>
-                                             </li>
-                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
-                                             </li>
-                                          </ul>
-                                       </li>
+                                        <li class="menu-item active">
+                                            <a href="index.html" aria-current="page">Home</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="video-infinite-scroll.html">Videos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="live-infinite-scroll.html">Lives</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="Category-infinite-scroll.html">Category</a>
+
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">About Us</a>
+                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="blog-right-sidebar.html">Blog</a>
+                                                </li>
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="pricing-style-1.html">Q&A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="contact-us.html">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                 </div>
+                                </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
@@ -94,7 +117,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -104,33 +127,23 @@
                                                 <a href="log-in.html"><i class="fa fa-user"></i>
                                                     Register </a>
                                             </li>
-                                            <!-- Library Menu -->
-                                            <li>
-                                                <a href="library.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Account Options</a>
-                                            </li>
-                                            <li>
-                                                <a href="library.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Stream Options</a>
-                                            </li>
-                                            
+
+
                                         </ul>
                                     </div>
                                 </div>
-                                </div>
-                                
                             </div>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                        </nav>
+
                     </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    </nav>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <!--========== Header ==============-->
@@ -141,681 +154,706 @@
             <div class="row no-gutters">
                 <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-lg-12"style="margin-top:50px;">
+                        <div class="col-lg-12" style="margin-top:50px;">
                             <div class="gen-video-holder">
-                                <iframe width="100%" height="550px" src="https://www.youtube.com/embed/LXb3EKWsInQ"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="single-video">
-                                
-                                <div class="gen-single-video-info">
-                                    
-                                    <div class="testo">
-                                        <div class="iconnn">
-                                        <span><I>Last Live: 5 hours ago</I></span></div>
-                                        <h5>Kenny's - Game Sniper</h5>
-                                       
-                                        <span style="color:#3F9FFF; " ><b> Counter-Strike : Global Offensive</b></span>
-                                        <br>
-                                        <span style=" color:#fff; " ><b> French</b></span>
-                                        <br>
-                                        <span style=" color:#888; " ><b> FPS, Multiplayer</b></span>
-                                        
-                                        
-                                        
-                                       
-                                        <br>
-                                        <br>
-                                        <hr>
-                                        <div style="margin-top: 50px; ;" class="userp">
-                                        <img src="images/kenny.jpg" alt="stream-lab-image">
-                                        <h2 class="testo-title">Kenny's</h2>
-                                        <div class="suivre">
-                                            <div class="gen-socail-share mt-0">
-                                                <ul class="social-inner">
-                                                    <li><a href="#" class="facebook"><i>Follow</i></a></li>      
-                                                    <li><a href="#" class="facebook"><i>Subscribe</i></a></li>                                      
-                                                </ul>
-                                            </div></div>
-                                        </div>
-
-                                   
-                                    <div class="gen-single-meta-holder">
-                                        <ul>
-                                            <li><I>953,5 K followers</I></li>
-                                            <li>
-                                                <a href="#"><span> Was on Stream: 2hours ago</span></a>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-eye">
-                                                </i>
-                                                <span>225 k Views</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                   
+                                <div id="player">
+                                    <video id="c_video" controls preload="none" autoplay loop width="100%"
+                                        height="650px" class="video-js vjs-default-skin">
+                                        <source
+                                            src="https://56daf69a78fb.us-east-1.playback.live-video.net/api/video/v1/us-east-1.125617940557.channel.pl47Hpj8s7nZ.m3u8"
+                                            type="application/x-mpegURL">
+                                    </video>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="pm-inner">
-                                <div class="gen-more-like">
-                                    <h5 class="gen-more-title">Last streams</h5>
-                                    <div class="row post-loadmore-wrapper">
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live1.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">sefozie world</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>Frensh</li>
-                                                                <li>
-                                                                    <a href="adventure.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                            <div class="single-video">
+
+                                <div id="streamdata" class="gen-single-video-info">
+                                    <div class="testo">
+                                        <div class="iconnn">
+
+                                        </div>
+                                        <h5>Kenny's - Game Sniper</h5>
+
+                                        <span style="color:#3F9FFF; "><b> Counter-Strike : Global Offensive</b></span>
+                                        <br>
+                                        <span style=" color:#fff; "><b> French</b></span>
+                                        <br>
+                                        <span style=" color:#888; "><b> FPS, Multiplayer</b></span>
+
+                                        <br>
+
+                                        <hr>
+                                        <div style="margin-top: 50px; ;" class="userp">
+                                            <img src="images/kenny.jpg" alt="stream-lab-image">
+                                            <h2 class="testo-title">Kenny's</h2>
+                                            <div class="suivre">
+                                                <div class="gen-socail-share mt-0">
+                                                    <ul class="social-inner">
+                                                        <li><a href="#" class="facebook"><i>Follow</i></a></li>
+                                                        <li><a href="#" class="facebook"><i>Subscribe</i></a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live2.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">War Hands</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="animation.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+
+                                        <div class="gen-single-meta-holder">
+                                            <ul>
+                                                <li><I>953,5 K followers</I></li>
+                                                <li>
+                                                    <a href="#"><span> Was on Stream: 2hours ago</span></a>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-eye">
+                                                    </i>
+                                                    <span>225 k Views</span>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live3.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">MGX-Fighter</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="adventure.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live4.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Voho The Skull Land</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="horror.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live6.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Bigfoot Silva</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>Frensh</li>
-                                                                <li>
-                                                                    <a href="action.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live7.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Robot War</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="tennis.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live8.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Nature World</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="traveling.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live9.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">AI:world</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="action.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live10.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Horse Ride</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="tennis.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                                <div class="gen-movie-contain">
-                                                    <div class="gen-movie-img">
-                                                        <img src="images/live11.jpg"
-                                                            alt="single-video-image">
-                                                        <div class="gen-movie-add">
-                                                            <div class="wpulike wpulike-heart">
-                                                                <div class="wp_ulike_general_class">
-                                                                    <a href="#" class="sl-button text-white"><i
-                                                                            class="far fa-heart"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="menu bottomRight">
-                                                                <li class="share top">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                    <ul class="submenu">
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-facebook-f"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-instagram"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="facebook"><i
-                                                                                    class="fab fa-twitter"></i></a></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="video-actions--link_add-to-playlist dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-toggle="dropdown"><i
-                                                                        class="fa fa-plus"></i></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="login-link" href="#">Sign in to add
-                                                                        this video to a playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gen-movie-action">
-                                                            <a href="video-home.html" class="gen-button">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gen-info-contain">
-                                                        <div class="gen-movie-info">
-                                                            <h3><a href="video-home.html">Big Machine</a></h3>
-                                                        </div>
-                                                        <div class="gen-movie-meta-holder">
-                                                            <ul>
-                                                                <li>French</li>
-                                                                <li>
-                                                                    <a href="traveling.html"><span>Counter-Strike: Global Offensive</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="gen-load-more-button">
-                                                <div class="gen-btn-container">
-                                                    <a class="gen-button gen-button-loadmore" href="#">
-                                                        <span class="button-text">Load More</span>
-                                                        <span class="loadmore-icon" style="display: none;"><i
-                                                                class="fa fa-spinner fa-spin"></i></span>
-                                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="pm-inner">
+                                    <div class="gen-more-like">
+                                        <h5 class="gen-more-title">Last streams</h5>
+                                        <div class="row post-loadmore-wrapper">
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live1.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">sefozie world</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>Frensh</li>
+                                                                    <li>
+                                                                        <a href="adventure.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live2.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">War Hands</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="animation.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live3.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">MGX-Fighter</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="adventure.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live4.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Voho The Skull Land</a>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="horror.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live6.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Bigfoot Silva</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>Frensh</li>
+                                                                    <li>
+                                                                        <a href="action.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live7.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Robot War</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="tennis.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live8.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Nature World</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="traveling.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live9.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">AI:world</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="action.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live10.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Horse Ride</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="tennis.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                            <img src="images/live11.jpg" alt="single-video-image">
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div class="wp_ulike_general_class">
+                                                                        <a href="#" class="sl-button text-white"><i
+                                                                                class="far fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="video-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="login-link" href="#">Sign in to add
+                                                                            this video to a playlist.</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                                <a href="video-home.html" class="gen-button">
+                                                                    <i class="fa fa-play"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                                <h3><a href="video-home.html">Big Machine</a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                    <li>French</li>
+                                                                    <li>
+                                                                        <a href="traveling.html"><span>Counter-Strike:
+                                                                                Global Offensive</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="gen-load-more-button">
+                                                    <div class="gen-btn-container">
+                                                        <a class="gen-button gen-button-loadmore" href="#">
+                                                            <span class="button-text">Load More</span>
+                                                            <span class="loadmore-icon" style="display: none;"><i
+                                                                    class="fa fa-spinner fa-spin"></i></span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -826,7 +864,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- Single Video End -->
 
@@ -859,7 +896,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -927,12 +964,109 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
     </div>
     <!-- Back-to-Top end -->
+    <script>
 
+        var options = {
+            //width: 100,
+            height: 360,
+            plugins: {
+                videoJsResolutionSwitcher: {
+                    default: 'high',
+                    dynamicLabel: true,
+                    autoplay: true
+                }
+            }
+        }
+
+        var player = videojs('c_video', options);
+
+
+
+    </script>
     <!-- js-min -->
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/asyncloader.min.js"></script>
@@ -962,4 +1096,5 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/single-videos.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:17 GMT -->
+
 </html>

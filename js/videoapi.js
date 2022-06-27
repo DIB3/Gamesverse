@@ -40,7 +40,7 @@ function videosdisp(data) {
                     <div class="gen-movie-add">
                         <div class="wpulike wpulike-heart">
                             <div class="wp_ulike_general_class">
-                                <a href="#" class="sl-button text-white">
+                                <a href="single-videos.html?video=${r._id}&channelId=${r.channelId}" class="sl-button text-white">
                                     <i class="fa-solid fa-eye"></i>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ function videosdisp(data) {
                         </div>
                     </div>
                     <div class="gen-movie-action">
-                        <a href="single-videos.html" class="gen-button">
+                        <a href="single-videos.html?video=${r._id}&channelId=${r.channelId}" class="gen-button">
                             <i class="fa fa-play"></i>
                         </a>
                     </div>

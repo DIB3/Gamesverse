@@ -3,12 +3,14 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/single-tv-shows.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:07 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
     <meta name="description" content="Streamlab - Video Streaming HTML5 Template" />
     <meta name="author" content="StreamLab" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/c94e0dd92b.js" crossorigin="anonymous"></script>
     <title>Gamesverse - Video Streaming HTML5 Template</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/Games Live copy.png">
@@ -22,6 +24,10 @@
 
 <body>
 
+    <script src="./js/getdatafromtoken.js"></script>
+    <script src="./js/channeles.js"></script>
+    <script src="./js/channelsvideo.js"></script>
+
     <!--=========== Loader =============-->
     <div id="gen-loading">
         <div id="gen-loading-center">
@@ -29,6 +35,14 @@
         </div>
     </div>
     <!--=========== Loader =============-->
+    <!-- Here a loader is created which
+			loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
 
     <!--========== Header ==============-->
     <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
@@ -38,41 +52,42 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="index.html">
-                                <img class="img-fluid logo"  src="images/Games Live TXTLEFT .png" style="width:210px;height:65px" alt="streamlab-image">
+                                <img class="img-fluid logo" src="images/Games Live TXTLEFT .png"
+                                    style="width:210px;height:65px" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                     <ul id="gen-main-menu" class="navbar-nav ml-auto">
-                                       <li class="menu-item ">
-                                          <a href="index.html" aria-current="page">Home</a>
-                                       </li>
-                                       <li class="menu-item active">
-                                          <a href="video-infinite-scroll.html">Videos</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="live-infinite-scroll.html">Lives</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="Category-infinite-scroll.html">Category</a>
-                                         
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="#">About Us</a>
-                                          <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                          <ul class="sub-menu">
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="blog-right-sidebar.html">Blog</a>
-                                             </li>
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="pricing-style-1.html">Q&A</a>
-                                             </li>
-                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
-                                             </li>
-                                          </ul>
-                                       </li>
+                                        <li class="menu-item ">
+                                            <a href="index.html" aria-current="page">Home</a>
+                                        </li>
+                                        <li class="menu-item active">
+                                            <a href="video-infinite-scroll.html">Videos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="live-infinite-scroll.html">Lives</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="Category-infinite-scroll.html">Category</a>
+
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">About Us</a>
+                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="blog-right-sidebar.html">Blog</a>
+                                                </li>
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="pricing-style-1.html">Q&A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="contact-us.html">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                 </div>
+                                </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
@@ -92,7 +107,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -102,18 +117,12 @@
                                                 <a href="log-in.html"><i class="fa fa-user"></i>
                                                     Register </a>
                                             </li>
-                                            <!-- Library Menu -->
-                                            <li>
-                                                <a href="options.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Settings</a>
-                                            </li>
-                                            
-                                            
+
+
                                         </ul>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -130,8 +139,9 @@
 
     <!-- Single-tv-Shows -->
     <section class="position-relative gen-section-padding-3">
-        <div class="tv-single-background">
-            <img style="height:450px;margin-top:90px;" src="images/kennyS.jpg"  alt="stream-lab-image">
+        <div id="banneruser" class="tv-single-background">
+
+
         </div>
         <div class="container">
             <div class="row">
@@ -139,42 +149,19 @@
                     <div class="gen-tv-show-wrapper style-1">
                         <div class="gen-tv-show-top">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="gentech-tv-show-img-holder">
-                                        <img src="images/kenny.jpg" alt="stream-lab-image">
-                                    </div>
+                                <div id="userimg" class="col-lg-6">
+
                                 </div>
-                                <div class="col-lg-6 align-self-center">
-                                    <div class="gen-single-tv-show-info">
-                                        <h2 class="gen-title">Kennys</h2>
-                                        <div class="gen-single-meta-holder">
-                                            <ul>
-                                                <li> <h6><B><I> 953,5 k </I></B></h6> followers</li>
-                                                
-                                                <li>Membre depuis 2009</li>
-                                                <li>
-                                                    <h6><B> G2 Esports</B></h6>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-eye">
-                                                    </i>
-                                                    <span>900.5k Views</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <p>Member of the G2 Esports CS:GO division. Awarded Best Sniper of the Year from 2012 to 2017. Major Champion in 2015.</p>
-                                        
-                                           <button class="btnfollow" style="color: #fff;"> <a href="#">Follow</a></button> 
-                                           
-                                        
-                                    </div>
+                                <div id="userinfo" class="col-lg-6 align-self-center">
+
                                 </div>
                             </div>
                         </div>
                         <div class="gen-season-holder">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active show" data-toggle="tab" href="#season_0">Diffusions récentes</a>
+                                    <a class="nav-link active show" data-toggle="tab" href="#season_0">Diffusions
+                                        récentes</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#season_1">Programme</a>
@@ -182,159 +169,11 @@
                             </ul>
                             <div class="tab-content">
                                 <div id="season_0" class="tab-pane active show">
-                                    <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true"
-                                        data-desk_num="4" data-lap_num="3" data-tab_num="2" data-mob_num="1"
-                                        data-mob_sm="1" data-autoplay="false" data-loop="false" data-margin="30">
-                                        <div class="item">
-                                            <div class="gen-episode-contain">
-                                                <div class="gen-episode-img">
-                                                    <img src="images/live1.jpg" alt="stream-lab-image">
-                                                    <div class="gen-movie-action">
-                                                        <a href="tv-shows-home.html" class="gen-button">
-                                                            <i class="fa fa-play"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-info-contain">
-                                                    <div class="gen-episode-info">
-                                                        <h3>
-                                                            Kennys <span>-</span>
-                                                            <a href="#">
-                                                                Un peu de CSGO 🔥
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="gen-single-meta-holder">
-                                                        <ul>
-                                                            <li class="run-time">1h 50min</li>
-                                                            <li class="release-date">
-                                                                Hier
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="gen-episode-contain">
-                                                <div class="gen-episode-img">
-                                                    <img src="images/live2.jpg" alt="stream-lab-image">
-                                                    <div class="gen-movie-action">
-                                                        <a href="tv-shows-home.html" class="gen-button">
-                                                            <i class="fa fa-play"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-info-contain">
-                                                    <div class="gen-episode-info">
-                                                        <h3>
-                                                            Kennys <span>-</span>
-                                                            <a href="#">
-                                                                SoloQ Faceit lvl 4 0/1Today
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="gen-single-meta-holder">
-                                                        <ul>
-                                                            <li class="run-time">2h 30min</li>
-                                                            <li class="release-date">
-                                                                Avant hier
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="gen-episode-contain">
-                                                <div class="gen-episode-img">
-                                                    <img src="images/live3.jpg" alt="stream-lab-image">
-                                                    <div class="gen-movie-action">
-                                                        <a href="tv-shows-home.html" class="gen-button">
-                                                            <i class="fa fa-play"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-info-contain">
-                                                    <div class="gen-episode-info">
-                                                        <h3>
-                                                            Kennys <span>-</span>
-                                                            <a href="#">
-                                                                [FR] 🔴 MM | Road to GLOBAL
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="gen-single-meta-holder">
-                                                        <ul>
-                                                            <li class="run-time">1h 53min</li>
-                                                            <li class="release-date">
-                                                                il y a 2 jours
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="gen-episode-contain">
-                                                <div class="gen-episode-img">
-                                                    <img src="images/live4.jpg" alt="stream-lab-image">
-                                                    <div class="gen-movie-action">
-                                                        <a href="tv-shows-home.html" class="gen-button">
-                                                            <i class="fa fa-play"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-info-contain">
-                                                    <div class="gen-episode-info">
-                                                        <h3>
-                                                            Kennys <span>-</span>
-                                                            <a href="#">
-                                                                [FR] SOLO Q FACEIT ?
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="gen-single-meta-holder">
-                                                        <ul>
-                                                            <li class="run-time">2h 40min</li>
-                                                            <li class="release-date">
-                                                                il y a 3 jours
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="gen-episode-contain">
-                                                <div class="gen-episode-img">
-                                                    <img src="images/live6.jpg" alt="stream-lab-image">
-                                                    <div class="gen-movie-action">
-                                                        <a href="tv-shows-home.html" class="gen-button">
-                                                            <i class="fa fa-play"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-info-contain">
-                                                    <div class="gen-episode-info">
-                                                        <h3>
-                                                            Kennys <span>-</span>
-                                                            <a href="#">
-                                                                Road to GE !
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="gen-single-meta-holder">
-                                                        <ul>
-                                                            <li class="run-time">3h 10min</li>
-                                                            <li class="release-date">
-                                                                il y a 4 jours
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div id="uservideos" class="owl-carousel owl-loaded owl-drag" data-dots="false"
+                                        data-nav="true" data-desk_num="4" data-lap_num="3" data-tab_num="2"
+                                        data-mob_num="1" data-mob_sm="1" data-autoplay="false" data-loop="false"
+                                        data-margin="30">
+
                                     </div>
                                 </div>
                                 <div id="season_1" class="tab-pane">
@@ -504,7 +343,7 @@
                     <div class="pm-inner">
                         <div class="gen-more-like">
                             <h5 class="gen-more-title">Recommendé</h5>
-                            <div class="row post-loadmore-wrapper">
+                            <div id="channelallvideos" class="row post-loadmore-wrapper">
                                 <div class="col-xl-3 col-lg-4 col-md-6">
                                     <div class="gen-carousel-movies-style-1 movie-grid style-1">
                                         <div class="gen-movie-contain">
@@ -568,573 +407,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s2.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Love In 21st</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>1h 40min</li>
-                                                        <li>
-                                                            <a href="action.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s3.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Family Love</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>4h 9min</li>
-                                                        <li>
-                                                            <a href="action.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s4.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Dance nation Dance</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>3h 30min</li>
-                                                        <li>
-                                                            <a href="comedy.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s5.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Vacation Life</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>40min</li>
-                                                        <li>
-                                                            <a href="adventure.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s6.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Dream Of Dargons</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>2h 10min</li>
-                                                        <li>
-                                                            <a href="drama.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s7.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Command In Your Hand</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>1h 23min</li>
-                                                        <li>
-                                                            <a href="comedy.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s8.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Stories Of the Dark</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>2h 59min</li>
-                                                        <li>
-                                                            <a href="biography.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s9.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">Friend Of Jin</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>4h 50min</li>
-                                                        <li>
-                                                            <a href="drama.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                        <div class="gen-movie-contain">
-                                            <div class="gen-movie-img">
-                                                <img src="images/s10.jpg" alt="streamlab-image">
-                                                <div class="gen-movie-add">
-                                                    <div class="wpulike wpulike-heart">
-                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                            <button type="button"
-                                                                class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="menu bottomRight">
-                                                        <li class="share top">
-                                                            <i class="fa fa-share-alt"></i>
-                                                            <ul class="submenu">
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i
-                                                                            class="fab fa-twitter"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="movie-actions--link_add-to-playlist dropdown">
-                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                                class="fa fa-plus"></i></a>
-                                                        <div class="dropdown-menu mCustomScrollbar">
-                                                            <div class="mCustomScrollBox">
-                                                                <div class="mCSB_container">
-                                                                    <a class="login-link" href="#">Sign in to add this
-                                                                        movie to a
-                                                                        playlist.</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="gen-movie-action">
-                                                    <a href="tv-shows-home.html" class="gen-button">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="gen-info-contain">
-                                                <div class="gen-movie-info">
-                                                    <h3><a href="tv-shows-home.html">3 Hacker:TBG</a></h3>
-                                                </div>
-                                                <div class="gen-movie-meta-holder">
-                                                    <ul>
-                                                        <li>1h 33min</li>
-                                                        <li>
-                                                            <a href="drama.html"><span>En Direct</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1182,7 +455,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -1250,6 +523,85 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
@@ -1285,4 +637,5 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/single-tv-shows.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:07 GMT -->
+
 </html>

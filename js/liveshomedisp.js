@@ -73,14 +73,14 @@ function videoshomedisp(data) {
                        </div>
                     </div>
                     <div class="gen-movie-action">
-                       <a href="single-videos.html?video=${a._id}&channelId=${a.channelId}" class="gen-button">
+                       <a href="single-live.html?video=${a._id}&channelId=${a.channelId}" class="gen-button">
                           <i class="fa fa-play"></i>
                        </a>
                     </div>
                  </div>
                  <div class="gen-info-contain">
                     <div class="gen-movie-info">
-                       <h3><a href="single-videos.html?video=${a._id}&channelId=${a.channelId}">${a.title}</a>
+                       <h3><a href="single-live.html?video=${a._id}&channelId=${a.channelId}">${a.title}</a>
                        </h3>
                     </div>
                     <div class="gen-movie-meta-holder">

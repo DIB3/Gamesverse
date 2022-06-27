@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <script src="./js/getdatafromtoken.js"></script>
     <script src="./js/singlevideodisplay.js"></script>
     <!--=========== Loader =============-->
     <!-- Here a loader is created which
@@ -106,7 +107,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -158,12 +159,15 @@
 
                                     <div class="testo">
                                         <div class="iconnn">
-                                            <p>5 hours ago </p>
+                                            <p id="uptime"> </p>
                                         </div>
                                         <h4 id="titledisp">
-                                        </h4><a id="imgdisp" class="tt" href="Channel.html">
-                                        </a>
-                                        <a id="namedisp" class="testo-title" href="Channel.html"></a>
+                                        </h4>
+                                        <div id="tochain">
+
+
+                                        </div>
+
                                         <div class="suivre">
                                             <div class="gen-socail-share mt-0">
                                                 <ul class="social-inner">
@@ -176,14 +180,14 @@
 
                                         <div class="gen-single-meta-holder">
                                             <ul>
-                                                <li><I id="followers">followers</I></li>
+                                                <li><I id="followers"> </I></li>
                                                 <li>
                                                     <a href="#"><span>2011</span></a>
                                                 </li>
                                                 <li>
                                                     <i class="fas fa-eye">
                                                     </i>
-                                                    <span>225 k Views</span>
+                                                    <span id="viewsid"> Views</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -871,7 +875,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -923,6 +927,85 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>

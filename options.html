@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/pricing-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
@@ -22,6 +23,8 @@
 </head>
 
 <body>
+    <script src="./js/options.js"></script>
+    <script src="./js/getdatafromtoken.js"></script>
 
     <!--=========== Loader =============-->
     <div id="gen-loading">
@@ -30,6 +33,14 @@
         </div>
     </div>
     <!--=========== Loader =============-->
+    <!-- Here a loader is created which
+			loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
 
     <!--========== Header ==============-->
     <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
@@ -39,41 +50,42 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="index.html">
-                                <img class="img-fluid logo"  src="images/Games Live TXTLEFT .png" style="width:210px;height:65px" alt="streamlab-image">
+                                <img class="img-fluid logo" src="images/Games Live TXTLEFT .png"
+                                    style="width:210px;height:65px" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                     <ul id="gen-main-menu" class="navbar-nav ml-auto">
-                                       <li class="menu-item active">
-                                          <a href="index.html" aria-current="page">Home</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="video-infinite-scroll.html">Videos</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="live-infinite-scroll.html">Lives</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="Category-infinite-scroll.html">Category</a>
-                                         
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="#">About Us</a>
-                                          <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                          <ul class="sub-menu">
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="blog-right-sidebar.html">Blog</a>
-                                             </li>
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="pricing-style-1.html">Q&A</a>
-                                             </li>
-                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
-                                             </li>
-                                          </ul>
-                                       </li>
+                                        <li class="menu-item active">
+                                            <a href="index.html" aria-current="page">Home</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="video-infinite-scroll.html">Videos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="live-infinite-scroll.html">Lives</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="Category-infinite-scroll.html">Category</a>
+
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">About Us</a>
+                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="blog-right-sidebar.html">Blog</a>
+                                                </li>
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="pricing-style-1.html">Q&A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="contact-us.html">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                 </div>
+                                </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
@@ -93,7 +105,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -103,22 +115,10 @@
                                                 <a href="log-in.html"><i class="fa fa-user"></i>
                                                     Register </a>
                                             </li>
-                                            <!-- Library Menu -->
-                                            <li>
-                                                <a href="library.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Account Options</a>
-                                            </li>
-                                            <li>
-                                                <a href="library.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Stream Options</a>
-                                            </li>
-                                            
                                         </ul>
                                     </div>
                                 </div>
-                              
+
                             </div>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -146,7 +146,7 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html"><i
+                                <li class="breadcrumb-item"><a href="index.html"><i
                                             class="fas fa-home mr-2"></i>Home</a></li>
                                 <li class="breadcrumb-item active">Settings</li>
                             </ol>
@@ -168,49 +168,66 @@
 
                         <h5>Account Settings</h5>
                         <br>
-                        <label  for="PImage">Profile Image</label>
-                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
-                    <button style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float:right;">UpLoad image</button>
-                    <br>
-                    <br>
-                    <br>
-                    <label style="margin-right: 799px;" for="BImage">Background Image </label>
-                    <input  type="text" id="bImage" name="bImage" placeholder="Upload an image...">
-                    <button style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400; font-size:13px ; float: right;">UpLoad image</button>
-                    <br>
-                    <label style="margin-right: 129px;" for="team">Team Esport or other</label>
-                    <input  type="text" id="team" name="team" placeholder="Your team..">
-                    
-                    <br>
-                    <label for="subject">Description</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height: 100px"></textarea>
+                        <label for="PImage">Profile Image <input type="file" id="profileimage-input"
+                                accept="image/jpeg, image/png, image/jpg"
+                                style="line-height:20px; background: none; margin-top: -30px; margin-left: 100px;"></label>
+                        <input type="text" id="pImage" name="pImage" placeholder="Put image URL">
+                        <br>
+                        <br>
+                        <br>
+                        <label style="margin-right: 799px;" for="BImage">Background Image <input type="file"
+                                id="bannerimage-input" accept="image/jpeg, image/png, image/jpg"
+                                style="line-height:20px; background: none; margin-top: -30px; margin-left: 150px;"></label>
+                        <input type="text" id="bImage" name="bImage" placeholder="Put banner URL">
+                        <br>
+                        <label style="margin-right: 129px;" for="team">Firstname</label>
+                        <input type="text" id="firstname" name="team" placeholder="Input ur firstname">
+                        <br>
+                        <label style="margin-right: 129px;" for="team">Lasttname</label>
+                        <input type="text" id="lasttname" name="team" placeholder="Input ur lastname">
+                        <br>
+                        <label for="subject">Description</label>
+                        <textarea id="subject" name="subject" placeholder="Write something.."
+                            style="height: 100px"></textarea>
                         <br><br>
                         <br>
-                    <br>
-                    <br>
+                        <br>
+                        <br>
 
-                    <h5>Stream Settings</h5>
-                        
-                    <label for="Title">Title</label>
-                    <input type="text" id="Title" name="Title" placeholder="Your Title..">
-                    <br>
+                        <h5>Stream Settings</h5>
 
-                    <label for="Category">Category</label>
-                    <input type="text" id="Category" name="Category" placeholder="Enter the category..">
-                    <br>
+                        <label for="Title">Title</label>
+                        <input type="text" id="Title" name="Title" placeholder="Your Title..">
+                        <br>
 
-                    <label for="tags">Tags</label>
-                    <input type="text" id="tags" name="tags" placeholder="Enter the tags..">
-                    <br>
+                        <label for="Category">Category</label>
+                        <form action="#">
+                            <label for="lang"></label>
+                            <select id="langgat" name="Category">
+
+                            </select>
+
+                        </form>
+                        <br>
+
+                        <label for="tags">Tags</label>
+                        <form action="#">
+                            <label for="langtag"></label>
+                            <select id="langtag" name="tags">
+
+                            </select>
+
+                        </form>
+                        <br>
                         <br><br><br>
-                    <input style="border-radius: 5px;" type="submit" value="save">
+                        <input style="border-radius: 5px;" type="submit" value="save">
 
                     </form>
-                
-                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Pricing Table End -->
 
@@ -243,7 +260,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -311,6 +328,85 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
@@ -346,4 +442,5 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/pricing-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 </html>

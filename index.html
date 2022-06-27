@@ -11,6 +11,11 @@
    <meta name="author" content="StreamLab" />
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <script src="https://kit.fontawesome.com/c94e0dd92b.js" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
    <title>Gameverse - Video Streaming </title>
    <!-- Favicon -->
    <link rel="shortcut icon" href="images/Games Live copy.png">
@@ -34,10 +39,11 @@
          <img src="images/Games Live TXT .png" style="width:250px;height:250px" alt="loading">
       </div>
    </div>
-
+   <script src="./js/getdatafromtoken.js"></script>
    <script src="./js/cathome.js"></script>
    <script src="./js/liveshomedisp.js"></script>
    <script src="./js/videoshomedisp.js"></script>
+   <script src="./js/adminverif.js"></script>
    <!--=========== Loader =============-->
    <!-- Here a loader is created which
 			loads till response comes -->
@@ -109,7 +115,7 @@
                         <div class="gen-account-holder">
                            <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                            <div class="gen-account-menu">
-                              <ul class="gen-account-menu">
+                              <ul id="useracces" class="gen-account-menu">
                                  <!-- Pms Menu -->
                                  <li>
                                     <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -119,14 +125,6 @@
                                     <a href="log-in.html"><i class="fa fa-user"></i>
                                        Register </a>
                                  </li>
-                                 <!-- Library Menu -->
-                                 <li>
-                                    <a href="options.html">
-                                       <i class="fa fa-indent"></i>
-                                       Settings</a>
-                                 </li>
-
-
                               </ul>
                            </div>
                         </div>
@@ -143,12 +141,12 @@
          </div>
       </div>
    </header>
-   -->
+
    <!--========== Header ==============-->
 
 
    <!-- Slick Slider start -->
-   <section class="gen-section-padding-2 pt-0 pb-0" style="margin-top:75px;">
+   <section class="gen-section-padding-2 pt-0 pb-0" style="margin-top:100px;">
       <div class="container">
          <div class="home-singal-silder">
             <div class="gen-nav-movies gen-banner-movies">
@@ -358,7 +356,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
                <div class="gen-movie-action">
                   <div class="gen-btn-container text-right">
-                     <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                     <a href="live-infinite-scroll.html" class="gen-button gen-button-flat">
                         <span class="text">More Videos</span>
                      </a>
                   </div>
@@ -391,7 +389,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
                <div class="gen-movie-action">
                   <div class="gen-btn-container text-right">
-                     <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                     <a href="video-infinite-scroll.html" class="gen-button gen-button-flat">
                         <span class="text">More Videos</span>
                      </a>
                   </div>
@@ -439,6 +437,7 @@
       </div>
       </div>
    </section>
+
    <!-- footer start -->
    <footer id="gen-footer">
       <div class="gen-footer-style-1">
@@ -468,7 +467,7 @@
                         <div class="menu-explore-container">
                            <ul class="menu">
                               <li class="menu-item">
-                                 <a href="index-2.html" aria-current="page">Home</a>
+                                 <a href="index.html" aria-current="page">Home</a>
                               </li>
                               <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                               <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -519,6 +518,119 @@
    </footer>
    <!-- footer End -->
 
+   <div id="popup1" class="overlay" style="z-index: 100;">
+      <div class="popup">
+         <h2>Uploading Video</h2>
+         <a class="close" href="#">&times;</a>
+         <div class="content">
+            <form id="savett" method="POST">
+               <br>
+               <label for="PImage">Adding a Video</label>
+               <input type="text" id="pImage" name="videoURL" placeholder="Upload an image...">
+               <button
+                  style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                  video</button>
+               <br>
+               <br>
+               <br>
+
+               <br>
+               <label style="margin-right: 129px;" for="team">Title</label>
+               <input type="text" id="team" name="title" placeholder="Enter the Title...">
+               <br>
+               <label for="subject">Category</label>
+               <input type="text" id="category" name="category" placeholder="Enter a category...">
+               <br><br>
+
+               <label for="Title">Tags</label>
+               <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+               <br>
+               <br><br><br>
+               <input id="savedata" style="border-radius: 5px;" type="button" value="save">
+
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <div id="popup2" class="overlay" style="z-index: 100;">
+      <div class="popup">
+         <h2>How to Stream</h2>
+         <a class="close" href="#">&times;</a>
+         <div class="content">
+            <form action="">
+               <br>
+               <a>1. Download OBS or Streamlab</a>
+               <br>
+               <br>
+               <a>2. Open OBS or Streamlabs </a>
+               <br>
+               <br>
+               <a>3. Select Settings</a>
+               <br>
+               <br>
+               <a>4. Select Stream</a>
+               <br>
+               <br>
+               <a>5. Replace the stream URL</a>
+               <br>
+               <br>
+               <div>
+                  <label for="streamkey">Stream URL</label>
+                  <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                     value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button onclick="mcopyult()"
+                     style="background: transparent; border: none !important;
+                  "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                  <br><br>
+
+
+                  <a>6. Replace the stream key</a>
+                  <br>
+                  <br>
+
+                  <label for="streamkey">Stream Key</label>
+                  <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                     value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()" style="background: transparent; border: none !important;
+                  "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      $("#savedata").on("click", function () {
+
+
+         var title = document.getElementById("team").value
+         console.log('je sui la' + title)
+
+         $.ajax({
+
+            type: 'P',
+
+            url: '/save',
+
+            data: { title },
+
+
+
+         })
+
+            .done(function (data) {
+
+
+
+               // element.appendChild(data);
+
+               // document.getElementById("sub_div").innerHTML = data;
+
+            });
+      });
+
+   </script>
+   <script>
+
+   </script>
    <!-- Back-to-Top start -->
    <div id="back-to-top">
       <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>

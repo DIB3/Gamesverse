@@ -18,8 +18,12 @@ async function getapi(url) {
     if (response) {
         hideloader();
     }
+    tochaine(data);
     videosdisp(data);
     Titledisp(data);
+    viewsdisplay(data);
+    timedisplay(data);
+
 
 }
 // Calling that async function
@@ -62,6 +66,58 @@ function Titledisp(data) {
     // Setting innerHTML as tab variable
     document.getElementById("titledisp").innerHTML = tab1;
 }
+
+function tochaine(data) {
+    let tab1 =
+        ``;
+
+    // Loop to access all rows
+    for (let r of data.ressource) {
+        if (videoid == r._id) {
+            tab1 += `<a id="imgdisp" class="tt" href="Channel.html?channelId=${chanid}">
+            </a>
+            <a id="namedisp" class="testo-title" href="Channel.html?channelId=${chanid}"></a>
+
+`;
+        }
+
+    }
+    // Setting innerHTML as tab variable
+    document.getElementById("tochain").innerHTML = tab1;
+}
+
+function viewsdisplay(data) {
+    let tab1 =
+        ``;
+
+    // Loop to access all rows
+    for (let r of data.ressource) {
+        if (videoid == r._id) {
+            tab1 += `${r.views} Views`;
+        }
+
+    }
+    // Setting innerHTML as tab variable
+    document.getElementById("viewsid").innerHTML = tab1;
+}
+
+function timedisplay(data) {
+    let tab1 =
+        ``;
+
+    // Loop to access all rows
+    for (let r of data.ressource) {
+        if (videoid == r._id) {
+            const dateTimeAgo = moment(r.uploadDate).fromNow();
+            console.log(dateTimeAgo);
+            tab1 += `${dateTimeAgo} `;
+        }
+
+    }
+    // Setting innerHTML as tab variable
+    document.getElementById("uptime").innerHTML = tab1;
+}
+
 
 const api1_url =
     "http://127.0.0.1:3000/profiles";
@@ -124,7 +180,7 @@ function chainfollowers(data) {
     // Loop to access all rows
     for (let f of data.ressource) {
         if (chanid == f._id) {
-            tab2 += `${f.followers} followers`;
+            tab2 += `${f.followers} Followers`;
         }
 
     }

@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/pricing-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-
+    <script src="./js/getdatafromtoken.js"></script>
     <!--=========== Loader =============-->
     <div id="gen-loading">
         <div id="gen-loading-center">
@@ -30,6 +31,14 @@
         </div>
     </div>
     <!--=========== Loader =============-->
+    <!-- Here a loader is created which
+			loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
 
     <!--========== Header ==============-->
     <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
@@ -39,41 +48,42 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="index.html">
-                                <img class="img-fluid logo"  src="images/Games Live TXTLEFT .png" style="width:210px;height:65px" alt="streamlab-image">
+                                <img class="img-fluid logo" src="images/Games Live TXTLEFT .png"
+                                    style="width:210px;height:65px" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                     <ul id="gen-main-menu" class="navbar-nav ml-auto">
-                                       <li class="menu-item ">
-                                          <a href="index.html" aria-current="page">Home</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="video-infinite-scroll.html">Videos</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="live-infinite-scroll.html">Lives</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="Category-infinite-scroll.html">Category</a>
-                                         
-                                       </li>
-                                       <li class="menu-item active">
-                                          <a href="#">About Us</a>
-                                          <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                          <ul class="sub-menu">
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="blog-right-sidebar.html">Blog</a>
-                                             </li>
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="pricing-style-1.html">Q&A</a>
-                                             </li>
-                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
-                                             </li>
-                                          </ul>
-                                       </li>
+                                        <li class="menu-item ">
+                                            <a href="index.html" aria-current="page">Home</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="video-infinite-scroll.html">Videos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="live-infinite-scroll.html">Lives</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="Category-infinite-scroll.html">Category</a>
+
+                                        </li>
+                                        <li class="menu-item active">
+                                            <a href="#">About Us</a>
+                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="blog-right-sidebar.html">Blog</a>
+                                                </li>
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="pricing-style-1.html">Q&A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="contact-us.html">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                 </div>
+                                </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
@@ -93,7 +103,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -103,18 +113,12 @@
                                                 <a href="log-in.html"><i class="fa fa-user"></i>
                                                     Register </a>
                                             </li>
-                                            <!-- Library Menu -->
-                                            <li>
-                                                <a href="options.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Settings</a>
-                                            </li>
-                                            
-                                            
+
+
                                         </ul>
                                     </div>
                                 </div>
-                              
+
                             </div>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -142,7 +146,7 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html"><i
+                                <li class="breadcrumb-item"><a href="index.html"><i
                                             class="fas fa-home mr-2"></i>Home</a></li>
                                 <li class="breadcrumb-item active">FAQ</li>
                             </ol>
@@ -159,17 +163,28 @@
         <div class="container container-2">
             <div class="row">
                 <div class="faq">
-                    
-                       <ol><h3>C'est quoi Gamesverse ?</h3></ol><br>
-                       <li>Gamesverse est un service de streaming vidéo en direct et de VAD lancé en février 2022 et exploité par offCORSE . Le site a commencé avec la diffusion en direct de jeux vidéo - y compris de compétitions d'e-sport - avant de se diversifier avec d'autres contenus — notamment musicaux et discussion</li><br>
-                       <ol><h3>Comment on peut streamer sur Gamesverse ?</h3></ol><br>
-                       <li>Tout d'abord vous créez votre compte sur notre plateforme, aprés avoir crée le compte il vous sera affiché une clé que vous collerez sur OBS et Bingo le stream va démarrer</li><br>
-                       <ol><h3>Le visionnage des streams est-il payant ou gratuit ?</h3></ol><br>
-                       <li>Le visionnage des streams est bien évidemment gratuit sur toute les plateformes que ça soit mobile ou web</li><br>
-                    </div>
+
+                    <ol>
+                        <h3>C'est quoi Gamesverse ?</h3>
+                    </ol><br>
+                    <li>Gamesverse est un service de streaming vidéo en direct et de VAD lancé en février 2022 et
+                        exploité par offCORSE . Le site a commencé avec la diffusion en direct de jeux vidéo - y compris
+                        de compétitions d'e-sport - avant de se diversifier avec d'autres contenus — notamment musicaux
+                        et discussion</li><br>
+                    <ol>
+                        <h3>Comment on peut streamer sur Gamesverse ?</h3>
+                    </ol><br>
+                    <li>Tout d'abord vous créez votre compte sur notre plateforme, aprés avoir crée le compte il vous
+                        sera affiché une clé que vous collerez sur OBS et Bingo le stream va démarrer</li><br>
+                    <ol>
+                        <h3>Le visionnage des streams est-il payant ou gratuit ?</h3>
+                    </ol><br>
+                    <li>Le visionnage des streams est bien évidemment gratuit sur toute les plateformes que ça soit
+                        mobile ou web</li><br>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Pricing Table End -->
 
@@ -183,7 +198,8 @@
                             <div class="widget">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <img src="images/Games Live TXTLEFT .png" class="gen-footer-logo" alt="gen-footer-logo">
+                                        <img src="images/Games Live TXTLEFT .png" class="gen-footer-logo"
+                                            alt="gen-footer-logo">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                         </p>
                                         <ul class="social-link">
@@ -202,7 +218,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -236,7 +252,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -254,6 +270,85 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
@@ -289,4 +384,5 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/pricing-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 </html>

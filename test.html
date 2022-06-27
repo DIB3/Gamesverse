@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <script src="./js/api.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title> Ajax JavaScript File Upload Example </title>
 </head>
 
 <body>
-    <!-- Here a loader is created which
-			loads till response comes -->
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status" id="loading">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <h1>Registered Employees</h1>
-    <!-- table for showing data -->
-    <table id="employees"></table>
+    <!-- HTML5 Input Form Elements -->
+    <input id="fileupload" type="file" name="fileupload" />
+    <button id="upload-button" onclick="uploadFile()"> Upload </button>
+
+    <!-- Ajax JavaScript File Upload Logic -->
+    <script>
+        async function uploadFile() {
+            let formData = new FormData();
+            formData.append("file", fileupload.files[0]);
+            await fetch('/images', {
+                method: "POST",
+                body: formData
+            });
+            alert('The file has been uploaded successfully.');
+        }
+    </script>
+
 </body>
 
 </html>

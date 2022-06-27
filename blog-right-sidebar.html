@@ -3,12 +3,14 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/blog-right-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
     <meta name="description" content="Streamlab - Video Streaming HTML5 Template" />
     <meta name="author" content="StreamLab" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/c94e0dd92b.js" crossorigin="anonymous"></script>
     <title>Gameverse - Video Streaming </title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/Games Live copy.png">
@@ -29,7 +31,15 @@
         </div>
     </div>
     <!--=========== Loader =============-->
+    <!-- Here a loader is created which
+			loads till response comes -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
+    <script src="./js/getdatafromtoken.js"></script>
     <!--========== Header ==============-->
     <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
         <div class="gen-bottom-header">
@@ -38,41 +48,42 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="#">
-                                <img class="img-fluid logo"  src="images/Games Live TXTLEFT .png" style="width:210px;height:65px" alt="streamlab-image">
+                                <img class="img-fluid logo" src="images/Games Live TXTLEFT .png"
+                                    style="width:210px;height:65px" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                     <ul id="gen-main-menu" class="navbar-nav ml-auto">
-                                       <li class="menu-item ">
-                                          <a href="index.html" aria-current="page">Home</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="video-infinite-scroll.html">Videos</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="live-infinite-scroll.html">Lives</a>
-                                       </li>
-                                       <li class="menu-item">
-                                          <a href="Category-infinite-scroll.html">Category</a>
-                                         
-                                       </li>
-                                       <li class="menu-item active">
-                                          <a href="#">About Us</a>
-                                          <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                          <ul class="sub-menu">
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="blog-right-sidebar.html">Blog</a>
-                                             </li>
-                                             <li class="menu-item menu-item-has-children">
-                                                <a href="pricing-style-1.html">Q&A</a>
-                                             </li>
-                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
-                                             </li>
-                                          </ul>
-                                       </li>
+                                        <li class="menu-item ">
+                                            <a href="index.html" aria-current="page">Home</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="video-infinite-scroll.html">Videos</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="live-infinite-scroll.html">Lives</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="Category-infinite-scroll.html">Category</a>
+
+                                        </li>
+                                        <li class="menu-item active">
+                                            <a href="#">About Us</a>
+                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="blog-right-sidebar.html">Blog</a>
+                                                </li>
+                                                <li class="menu-item menu-item-has-children">
+                                                    <a href="pricing-style-1.html">Q&A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="contact-us.html">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                 </div>
+                                </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
@@ -92,7 +103,7 @@
                                 <div class="gen-account-holder">
                                     <a href="javascript:void(0)" id="gen-user-btn"><i class="fa fa-user"></i></a>
                                     <div class="gen-account-menu">
-                                        <ul class="gen-account-menu">
+                                        <ul id="useracces" class="gen-account-menu">
                                             <!-- Pms Menu -->
                                             <li>
                                                 <a href="log-in.html"><i class="fas fa-sign-in-alt"></i>
@@ -102,19 +113,15 @@
                                                 <a href="log-in.html"><i class="fa fa-user"></i>
                                                     Register </a>
                                             </li>
-                                            <!-- Library Menu -->
-                                            <li>
-                                                <a href="options.html">
-                                                    <i class="fa fa-indent"></i>
-                                                    Settings</a>
-                                            </li>
-                                            
-                                            
+
+
+
+
                                         </ul>
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </div>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -142,7 +149,7 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html"><i
+                                <li class="breadcrumb-item"><a href="index.html"><i
                                             class="fas fa-home mr-2"></i>Home</a></li>
                                 <li class="breadcrumb-item active">Blog</li>
                             </ol>
@@ -180,8 +187,10 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">VerseCup, la grande compétition Esport internationale organisé par Gamesverse </a></h5>
-                                        <p>La compétition qui comporte de différents tournois dans de différent catégorie de jeu </p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">VerseCup, la grande
+                                                compétition Esport internationale organisé par Gamesverse </a></h5>
+                                        <p>La compétition qui comporte de différents tournois dans de différent
+                                            catégorie de jeu </p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -210,9 +219,12 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Célébrer un talent parmi un milliard d'autres pour la journée mondiale de sensibilisation à l'accessibilité
-                                                </a></h5>
-                                        <p>Mise à jour du 19/05 : Cet article a été révisé pour corriger une erreur...</p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Célébrer un talent parmi
+                                                un milliard d'autres pour la journée mondiale de sensibilisation à
+                                                l'accessibilité
+                                            </a></h5>
+                                        <p>Mise à jour du 19/05 : Cet article a été révisé pour corriger une erreur...
+                                        </p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -241,8 +253,11 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Ça y est, les billets pour la VerseCup sont enfin en vente !</a></h5>
-                                        <p>Hypez-vous, rassemblez votre squad et tenez-vous prêt pour la VerseCup d'Amsterdam ! Les billets sont maintenant officiellement en vente et vous pouvez acheter les vôtres ici.</p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Ça y est, les billets pour
+                                                la VerseCup sont enfin en vente !</a></h5>
+                                        <p>Hypez-vous, rassemblez votre squad et tenez-vous prêt pour la VerseCup
+                                            d'Amsterdam ! Les billets sont maintenant officiellement en vente et vous
+                                            pouvez acheter les vôtres ici.</p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -271,8 +286,12 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Apportez la touche finale à vos créations et rencontrez les juges du concours VerseTalent !</a></h5>
-                                        <p>Une seconde, nous sommes en mars ? C'est pas vrai. Ça veut dire que la date limite pour l'inscription au concours de cosplay officiel de la VerseTalent approche à grands pas !</p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Apportez la touche finale
+                                                à vos créations et rencontrez les juges du concours VerseTalent !</a>
+                                        </h5>
+                                        <p>Une seconde, nous sommes en mars ? C'est pas vrai. Ça veut dire que la date
+                                            limite pour l'inscription au concours de cosplay officiel de la VerseTalent
+                                            approche à grands pas !</p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -301,8 +320,11 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Levez vos épées pour la Journée des modérateurs</a></h5>
-                                        <p>Aujourd'hui, nous célébrons officiellement les travailleurs les plus acharnés du chat. Ceux qui jouent un rôle crucial et irremplaçable pour le soutien des créateurs et le développement des communautés que vous adorez tant. </p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Levez vos épées pour la
+                                                Journée des modérateurs</a></h5>
+                                        <p>Aujourd'hui, nous célébrons officiellement les travailleurs les plus acharnés
+                                            du chat. Ceux qui jouent un rôle crucial et irremplaçable pour le soutien
+                                            des créateurs et le développement des communautés que vous adorez tant. </p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -331,8 +353,14 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Célébrez le mois des femmes dans l'Histoire sur Gamesverse !</a></h5>
-                                        <p>Les créatrices sont au cœur de ce qui rend Gamesverse si spécial. Des compétitions épiques, des démonstrations d'art exceptionnelles, des rires dans le chat, sans oublier les moments où tout le monde se dit "Quoi ? Comment est-ce qu'elle a fait ça ?" : les créatrices nous offrent des streams inoubliables et façonnent des communautés incroyables tous les jours sur notre plateforme</p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Célébrez le mois des
+                                                femmes dans l'Histoire sur Gamesverse !</a></h5>
+                                        <p>Les créatrices sont au cœur de ce qui rend Gamesverse si spécial. Des
+                                            compétitions épiques, des démonstrations d'art exceptionnelles, des rires
+                                            dans le chat, sans oublier les moments où tout le monde se dit "Quoi ?
+                                            Comment est-ce qu'elle a fait ça ?" : les créatrices nous offrent des
+                                            streams inoubliables et façonnent des communautés incroyables tous les jours
+                                            sur notre plateforme</p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -361,9 +389,13 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="gen-blog-title"><a href="blog-single.html">Fiertés 2022 sur Gamesverse : rendez hommage aux membres de la communauté de stream tout au long du mois
-                                        </a></h5>
-                                        <p>Ce mois-ci, nous rendons hommage à tous les membres de la communauté de stream sur Gamesverse. Toute l'authenticité. Toute l'harmonie. Toute la personnalité. Toute l'expression de soi.</p>
+                                        <h5 class="gen-blog-title"><a href="blog-single.html">Fiertés 2022 sur
+                                                Gamesverse : rendez hommage aux membres de la communauté de stream tout
+                                                au long du mois
+                                            </a></h5>
+                                        <p>Ce mois-ci, nous rendons hommage à tous les membres de la communauté de
+                                            stream sur Gamesverse. Toute l'authenticité. Toute l'harmonie. Toute la
+                                            personnalité. Toute l'expression de soi.</p>
                                         <div class="gen-btn-container">
                                             <a href="blog-single.html" class="gen-button">
                                                 <div class="gen-button-block">
@@ -390,42 +422,61 @@
                                                 <div class="col-lg-8 mx-lg-auto">
                                                     <div data-aos="fade-up">
                                                         <div class="card shadow-box shadow-hover mb-3">
-                                                            <div class="card-header py-3"><a href="#" class="card-title collapsed" data-toggle="collapse" data-target="#v1-q1">C'est Quoi Gamesverse ?</a></div>
+                                                            <div class="card-header py-3"><a href="#"
+                                                                    class="card-title collapsed" data-toggle="collapse"
+                                                                    data-target="#v1-q1">C'est Quoi Gamesverse ?</a>
+                                                            </div>
                                                             <div id="v1-q1" class="collapse card-body">
-                                                                
-                                                                <p>Gamesverse est un service de streaming vidéo en direct et de VAD lancé en février 2022 et exploité par offCORSE . Le site a commencé avec la diffusion en direct de jeux vidéo - y compris de compétitions d'e-sport - avant de se diversifier avec d'autres contenus — notamment musicaux et discussion</p>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div data-aos="fade-up">
-                                                        <div class="card shadow-box shadow-hover mb-3">
-                                                            <div class="card-header py-3"><a href="#" class="card-title collapsed" data-toggle="collapse" data-target="#v1-q2">Comment On Peut Streamer Sur Gamesverse ?
-                                                            </a></div>
-                                                            <div id="v1-q2" class="collapse card-body">
-                                                                <p>Tout d'abord vous créez votre compte sur notre plateforme, aprés avoir crée le compte il vous sera affiché une clé que vous collerez sur OBS et Bingo le stream va démarrer. </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div data-aos="fade-up">
-                                                        <div class="card shadow-box shadow-hover mb-3">
-                                                            <div class="card-header py-3"><a href="#" class="card-title collapsed" data-toggle="collapse" data-target="#v1-q3">Le Visionnage Des Streams Est-Il Payant Ou Gratuit ?</a></div>
-                                                            <div id="v1-q3" class="collapse card-body">
-                                                                <p>Le visionnage des streams est bien évidemment gratuit sur toute les plateformes que ça soit mobile ou web </p>
 
-                                                                </div>
+                                                                <p>Gamesverse est un service de streaming vidéo en
+                                                                    direct et de VAD lancé en février 2022 et exploité
+                                                                    par offCORSE . Le site a commencé avec la diffusion
+                                                                    en direct de jeux vidéo - y compris de compétitions
+                                                                    d'e-sport - avant de se diversifier avec d'autres
+                                                                    contenus — notamment musicaux et discussion</p>
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                   
+                                                    <div data-aos="fade-up">
+                                                        <div class="card shadow-box shadow-hover mb-3">
+                                                            <div class="card-header py-3"><a href="#"
+                                                                    class="card-title collapsed" data-toggle="collapse"
+                                                                    data-target="#v1-q2">Comment On Peut Streamer Sur
+                                                                    Gamesverse ?
+                                                                </a></div>
+                                                            <div id="v1-q2" class="collapse card-body">
+                                                                <p>Tout d'abord vous créez votre compte sur notre
+                                                                    plateforme, aprés avoir crée le compte il vous sera
+                                                                    affiché une clé que vous collerez sur OBS et Bingo
+                                                                    le stream va démarrer. </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div data-aos="fade-up">
+                                                        <div class="card shadow-box shadow-hover mb-3">
+                                                            <div class="card-header py-3"><a href="#"
+                                                                    class="card-title collapsed" data-toggle="collapse"
+                                                                    data-target="#v1-q3">Le Visionnage Des Streams
+                                                                    Est-Il Payant Ou Gratuit ?</a></div>
+                                                            <div id="v1-q3" class="collapse card-body">
+                                                                <p>Le visionnage des streams est bien évidemment gratuit
+                                                                    sur toute les plateformes que ça soit mobile ou web
+                                                                </p>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-12 mt-4 mt-xl-0">
@@ -445,33 +496,38 @@
                             </li>
                             <h2 class="widget-title">Célébrer Un Talent Parmi Un Milliard...</h2>
                             <li>
-                                <a href="blog-single.html">Mise à jour du 19/05 : Cet article a été révisé pour corriger une erreur...</a>
+                                <a href="blog-single.html">Mise à jour du 19/05 : Cet article a été révisé pour corriger
+                                    une erreur...</a>
                             </li>
                             <h2 class="widget-title"> Les Billets Pour La VerseCup</h2>
                             <li>
-                                <a href="blog-single.html">Hypez-vous, rassemblez votre squad et tenez-vous prêt pour la VerseCup d'Amsterdam</a>
+                                <a href="blog-single.html">Hypez-vous, rassemblez votre squad et tenez-vous prêt pour la
+                                    VerseCup d'Amsterdam</a>
                             </li>
                             <h2 class="widget-title">Apportez La Touche Finale À Vos Créations Et Rencontrez..</h2>
                             <li>
                                 <a href="blog-single.html">Une seconde, nous sommes en mars ? C'est pas vrai...</a>
                             </li>
-                            
+
                         </ul>
                     </div>
                     <div class="widget widget_recent_comments">
                         <h2 class="widget-title">Levez Vos Épées Pour La Journée Des Modérateurs </h2>
                         <ul id="recentcomments">
                             <li class="recentcomments"><span class="comment-author-link"><a href="blog-single.html"
-                                        rel="external nofollow ugc" class="url pl-0">Aujourd'hui, nous célébrons officiellement les travailleurs les plus acharnés du chat. </a></span></li>
-                                        <h2 class="widget-title">Célébrez Le Mois Des Femmes Dans L'Histoire Sur Gamesverse ! </h2>
+                                        rel="external nofollow ugc" class="url pl-0">Aujourd'hui, nous célébrons
+                                        officiellement les travailleurs les plus acharnés du chat. </a></span></li>
+                            <h2 class="widget-title">Célébrez Le Mois Des Femmes Dans L'Histoire Sur Gamesverse ! </h2>
                             <li class="recentcomments"><span class="comment-author-link"><a href="blog-single.html"
-                                        rel="external nofollow ugc" class="url pl-0">Les créatrices sont au cœur de ce qui rend Gamesverse si spécial...</a></span></li>
-                                        <h2 class="widget-title">Fiertés 2022 Sur Gamesverse : Rendez Hommage Aux Membres... </h2>
-                            <li class="recentcomments"><span class="comment-author-link">Ce mois-ci, nous rendons hommage à tous les membres de la communauté de stream sur Gamesverse.</span></li>
-                           
+                                        rel="external nofollow ugc" class="url pl-0">Les créatrices sont au cœur de ce
+                                        qui rend Gamesverse si spécial...</a></span></li>
+                            <h2 class="widget-title">Fiertés 2022 Sur Gamesverse : Rendez Hommage Aux Membres... </h2>
+                            <li class="recentcomments"><span class="comment-author-link">Ce mois-ci, nous rendons
+                                    hommage à tous les membres de la communauté de stream sur Gamesverse.</span></li>
+
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -488,7 +544,8 @@
                             <div class="widget">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <img src="images/Games Live TXTLEFT .png" class="gen-footer-logo" alt="gen-footer-logo">
+                                        <img src="images/Games Live TXTLEFT .png" class="gen-footer-logo"
+                                            alt="gen-footer-logo">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                         </p>
                                         <ul class="social-link">
@@ -507,7 +564,7 @@
                                 <div class="menu-explore-container">
                                     <ul class="menu">
                                         <li class="menu-item">
-                                            <a href="index-2.html" aria-current="page">Home</a>
+                                            <a href="index.html" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
@@ -541,7 +598,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -559,6 +616,85 @@
     </footer>
     <!-- footer End -->
 
+    <div id="popup1" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>Uploading Video</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <label for="PImage">Adding a Video</label>
+                    <input type="text" id="pImage" name="pImage" placeholder="Upload an image...">
+                    <button
+                        style="border-radius: 5px; border:#333;color:#fff; background-color:#333; font-weight:400;font-size:13px; float: right;">UpLoad
+                        video</button>
+                    <br>
+                    <br>
+                    <br>
+
+                    <br>
+                    <label style="margin-right: 129px;" for="team">Title</label>
+                    <input type="text" id="team" name="team" placeholder="Enter the Title...">
+                    <br>
+                    <label for="subject">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter a category...">
+                    <br><br>
+
+                    <label for="Title">Tags</label>
+                    <input type="text" id="streamk" name="streamk" placeholder="Enter the Tags...">
+                    <br>
+                    <br><br><br>
+                    <input style="border-radius: 5px;" type="submit" value="save">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay" style="z-index: 100;">
+        <div class="popup">
+            <h2>How to Stream</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <form action="">
+                    <br>
+                    <a>1. Download OBS or Streamlab</a>
+                    <br>
+                    <br>
+                    <a>2. Open OBS or Streamlabs </a>
+                    <br>
+                    <br>
+                    <a>3. Select Settings</a>
+                    <br>
+                    <br>
+                    <a>4. Select Stream</a>
+                    <br>
+                    <br>
+                    <a>5. Replace the stream URL</a>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="streamkey">Stream URL</label>
+                        <input id="copyUrl" type="text" autocapitalize="off" autocorrect="off" readonly=""
+                            value="rtmps://56daf69a78fb.global-contribute.live-video.net:443/app/"><button
+                            onclick="mcopyult()" style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                        <br><br>
+
+
+                        <a>6. Replace the stream key</a>
+                        <br>
+                        <br>
+
+                        <label for="streamkey">Stream Key</label>
+                        <input id="copystream" type="password" autocapitalize="off" autocorrect="off" readonly=""
+                            value="live_114126703_azfiym0OBejTZ5A1nId7ziR2xnaUH9"> <button onclick="copystreamkey()"
+                            style="background: transparent; border: none !important;
+                    "><i class="fa-solid fa-copy" style="color: white;"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Back-to-Top start -->
     <div id="back-to-top">
         <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
@@ -594,4 +730,5 @@
 
 
 <!-- Mirrored from template.gentechtreedesign.com/html/streamlab/html/blog-right-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jun 2022 10:14:44 GMT -->
+
 </html>

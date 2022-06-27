@@ -38,11 +38,11 @@ function videoslive(data) {
                     <div class="gen-movie-add">
                         <div class="live">
                             
-                            <I><b><a   href="" >LIVE</a></b></I>
+                            <I><b><a   href="single-videos.html?video=${f._id}&channelId=${f.channelId}" >LIVE</a></b></I>
                         </div>
                         <div class="wpulike wpulike-heart">
                             <div class="wp_ulike_general_class">
-                                <a href="#" class="sl-button text-white">
+                                <a href="single-videos.html?video=${f._id}&channelId=${f.channelId}" class="sl-button text-white">
                                     <i class="fa-solid fa-eye"></i>
                             </div>
                         </div>
@@ -71,14 +71,14 @@ function videoslive(data) {
                         </div>
                     </div>
                     <div class="gen-movie-action">
-                        <a href="single-live.html" class="gen-button">
-                            <i class="fa fa-play"></i>
-                        </a>
+                    <a href="single-videos.html?video=${f._id}&channelId=${f.channelId}" class="gen-button">
+                    <i class="fa fa-play"></i>
+                     </a>
                     </div>
                 </div>
                 <div class="gen-info-contain">
                     <div class="gen-movie-info">
-                        <h3><a href="single-live.html"</a>${f.title}</h3>
+                        <h3><a href="single-live.html?video=${f._id}&channelId=${f.channelId}"</a>${f.title}</h3>
                     </div>
                     <div class="gen-movie-meta-holder">
                         <ul>

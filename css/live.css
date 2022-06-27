@@ -1,0 +1,51 @@
+.c_video-dimensions {
+    margin: 15px;
+    width: 100%;
+    height: 620px;
+}
+
+#player video {
+    width: 100%;
+    height: 100%;
+}
+
+.video-js .vjs-control {
+    padding: 10px;
+    background-color: rgba(26, 27, 31, 0.8)
+}
+
+.vjs-menu-button-popup .vjs-menu {
+    left: -6em;
+}
+
+.vjs-remaining-time.vjs-time-control.vjs-control {
+    display: none;
+}
+
+button.vjs-fullscreen-control.vjs-control.vjs-button {
+    display: none;
+}
+
+.vjs-volume-menu-button.vjs-menu-button.vjs-menu-button-inline.vjs-control.vjs-button.vjs-volume-menu-button-horizontal.vjs-vol-0 {
+    display: none;
+}
+
+.isme {
+    text-align: center;
+}
+
+a {
+    color: #3563D9;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.video-js .vjs-big-play-button {
+
+    top: 45%;
+    left: 45%;
+}
+
+.vjs-live-display {
+    margin-top: -10px;
+}
