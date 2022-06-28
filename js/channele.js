@@ -1,6 +1,6 @@
 let token2 = document.cookie;
 function parsewt(token2) {
-    var base64Url = token.split('.')[1];
+    var base64Url = token2.split('.')[1];
     var base64 = decodeURIComponent(atob(base64Url).split('').map((c) => {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
@@ -93,7 +93,7 @@ function userainfo(data) {
             </div>
             <p>${a.channeldescription}</p>
 
-            <button class="btnfollow" style="color: #fff;"> <a href="#">Follow</a></button>
+           
 
 
         </div>`;

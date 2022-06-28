@@ -48,6 +48,12 @@ function videosdisp(data) {
         }
 
     }
+    if (videoid == "62baeb711ecb274e0cdda22c") {
+        tab += `<iframe width="100%" height="550px" src="./images/livetest.mp4"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>`;
+    }
     // Setting innerHTML as tab variable
     document.getElementById("videosdisplay").innerHTML = tab;
 }
@@ -62,6 +68,9 @@ function Titledisp(data) {
             tab1 += `${r.title}`;
         }
 
+    }
+    if (videoid == "62baeb711ecb274e0cdda22c") {
+        tab1 += `live test`;
     }
     // Setting innerHTML as tab variable
     document.getElementById("titledisp").innerHTML = tab1;
@@ -82,6 +91,14 @@ function tochaine(data) {
         }
 
     }
+    if (videoid == "62baeb711ecb274e0cdda22c") {
+        tab1 += `<a id="imgdisp" class="tt" href="Channel.html?channelId=62b583f4f2f45df54242f98f}">
+        </a>
+        <a id="namedisp" class="testo-title" href="Channel.html?channelId=62b583f4f2f45df54242f98f"></a>
+
+`;
+    }
+
     // Setting innerHTML as tab variable
     document.getElementById("tochain").innerHTML = tab1;
 }

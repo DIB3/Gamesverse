@@ -1,3 +1,16 @@
+let token5 = document.cookie;
+function parsewt(token5) {
+   var base64Url = token5.split('.')[1];
+   var base64 = decodeURIComponent(atob(base64Url).split('').map((c) => {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+   }).join(''));
+
+
+   return JSON.parse(base64);
+};
+var x = parsewt(token5)
+console.log(x.username)
+
 
 const api1_url =
    "http://127.0.0.1:3000/streams";
@@ -30,7 +43,8 @@ function videoshomedisp(data) {
 
    // Loop to access all rows
    for (let a of data.ressource) {
-      tab4 += `<div class="item">
+      if (x.username == "locklier") {
+         tab4 += `<div class="item">
         <div
            class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
            <div class="gen-carousel-movies-style-2 movie-grid style-2">
@@ -97,7 +111,8 @@ function videoshomedisp(data) {
         </div>
         <!-- #post-## -->
      </div>`;
+      }
+      // Setting innerHTML as tab variable
+      document.getElementById("livedisphome").innerHTML = tab4;
    }
-   // Setting innerHTML as tab variable
-   document.getElementById("livedisphome").innerHTML = tab4;
 }

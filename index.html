@@ -39,7 +39,7 @@
          <img src="images/Games Live TXT .png" style="width:250px;height:250px" alt="loading">
       </div>
    </div>
-   <script src="./js/getdatafromtoken.js"></script>
+   <script src="./js/adminverif.js"></script>
    <script src="./js/cathome.js"></script>
    <script src="./js/liveshomedisp.js"></script>
    <script src="./js/videoshomedisp.js"></script>
@@ -598,33 +598,28 @@
    </div>
 
    <script>
-      $("#savedata").on("click", function () {
+      $("#savett").submit(function (e) {
 
+         e.preventDefault();
 
-         var title = document.getElementById("team").value
-         console.log('je sui la' + title)
+         let form = $(this);
+         let actionUrl = form.attr('action');
 
-         $.ajax({
+         let loginApiCall = $.ajax({
+            type: "POST",
+            url: 'http://127.0.0.1:3000/videos',
+            data: form.serialize(),
+            success: function (data, textStatus, request) {
+               let authToken = request.getResponseHeader('auth-token');
+            
 
-            type: 'P',
+               //HNA TU LE REDIRIGE VERS LACCEUIL
+            },
+            error: function (request, textStatus, errorThrown) {
+               //HNA TU LUI AFFICHE UN MESSAGE
+            }
+         });
 
-            url: '/save',
-
-            data: { title },
-
-
-
-         })
-
-            .done(function (data) {
-
-
-
-               // element.appendChild(data);
-
-               // document.getElementById("sub_div").innerHTML = data;
-
-            });
       });
 
    </script>

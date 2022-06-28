@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Gamesverse - Adminitration Dashboard</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="assets/images/Games Live copy.png" />
+</head>
+
+<body>
+  <script src="./js/dashdata.js"></script>
+
+  <!-- Here a loader is created which
+			loads till response comes -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" id="loading">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/Games Live TXTadmwhite .png"
+            alt="logo" style="width:200px;height:200px; margin-top:20px;" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/minilogo.png "
+            style="height: 45px; width: 40px;" alt="logo" /></a>
+      </div>
+      <ul class="nav">
+
+        <li class="nav-item nav-category">
+          <span class="nav-link">Navigation</span>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-speedometer"></i>
+            </span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+              alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                aria-labelledby="profileDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle ">
+                      <i class="mdi mdi-logout text-danger" onclick="deleteAllCookies()"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject mb-1">Log out</p>
+                  </div>
+                </a>
+
+
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 id="userdata" class="mb-0"></h3>
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">-2%</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <h6 class="text-muted font-weight-normal" style=" margin-top: -20px; margin-left: 240px;">Users</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 id="followers" class="mb-0"></h3>
+                        <p class="text-success ml-2 mb-0 font-weight-medium">+31%</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <h6 class="text-muted font-weight-normal" style=" margin-top: -20px; margin-left: 240px;">Followers
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 id="subs" class="mb-0">95,7k</h3>
+                        <p class="text-success ml-2 mb-0 font-weight-medium">+61%</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <h6 class="text-muted font-weight-normal" style=" margin-top: -20px; margin-left: 240px;">Subscribers
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 id="views" class="mb-0"></h3>
+                        <p class="text-success ml-2 mb-0 font-weight-medium">+21%</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <h6 class="text-muted font-weight-normal" style=" margin-top: -20px; margin-left: 240px;">Views</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Lives</h5>
+                  <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                      <div class="d-flex d-sm-block d-md-flex align-items-center">
+                        <h2 class="mb-0">0</h2>
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">-9.61% </p>
+                      </div>
+                      <h6 class="text-muted font-weight-normal"> 9.61% Since last week</h6>
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                      <i class="icon-lg mdi mdi-voice text-danger ml-auto"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Videos</h5>
+                  <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                      <div class="d-flex d-sm-block d-md-flex align-items-center">
+                        <h2 id="videos" class="mb-0"></h2>
+                        <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
+                      </div>
+                      <h6 class="text-muted font-weight-normal"> 9.61% Since last week</h6>
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                      <i class="icon-lg mdi mdi-camcorder text-primary ml-auto"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Channels</h5>
+                  <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                      <div class="d-flex d-sm-block d-md-flex align-items-center">
+                        <h2 id="userdata1" class="mb-0">66.2K</h2>
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
+                      </div>
+                      <h6 class="text-muted font-weight-normal">2.27% Since last week</h6>
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                      <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row ">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"> Users List</h4>
+                  <div class="table-responsive">
+                    <table id="userslist" class="table">
+                      <thead>
+                        <tr>
+                          <th> User Name </th>
+                          <th> Videos </th>
+                          <th> Followers </th>
+                          <th> Lives </th>
+                          <th> Views </th>
+                          <th> Start Date </th>
+                          <th> Status </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/faces/face1.jpg" alt="image" />
+                            <span class="pl-2">Henry Klein</span>
+                          </td>
+                          <td>112 </td>
+                          <td> 4,557 </td>
+                          <td> Offline </td>
+                          <td> 104 000 </td>
+                          <td> 04 Dec 2019 </td>
+                          <td>
+                            <div class="badge badge-outline-success">Approved</div>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/faces/face2.jpg" alt="image" />
+                            <span class="pl-2">Estella Bryan</span>
+                          </td>
+                          <td> 846 </td>
+                          <td> 5216 </td>
+                          <td> Online </td>
+                          <td> 154 788</td>
+                          <td> 04 Dec 2019 </td>
+                          <td>
+                            <div class="badge badge-outline-warning">Pending</div>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/faces/face5.jpg" alt="image" />
+                            <span class="pl-2">Lucy Abbott</span>
+                          </td>
+                          <td> 15 </td>
+                          <td> 152 </td>
+                          <td> Offline </td>
+                          <td> 356 </td>
+                          <td> 04 Dec 2019 </td>
+                          <td>
+                            <div class="badge badge-outline-danger">Rejected</div>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/faces/face3.jpg" alt="image" />
+                            <span class="pl-2">Peter Gill</span>
+                          </td>
+                          <td> 253 </td>
+                          <td> 5,246 </td>
+                          <td> Online </td>
+                          <td> 145 265 </td>
+                          <td> 04 Dec 2019 </td>
+                          <td>
+                            <div class="badge badge-outline-success">Approved</div>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/faces/face4.jpg" alt="image" />
+                            <span class="pl-2">Sallie Reyes</span>
+                          </td>
+                          <td> 178 </td>
+                          <td>2,458 </td>
+                          <td> Online </td>
+                          <td> 165 842 </td>
+                          <td> 04 Dec 2019 </td>
+                          <td>
+                            <div class="badge badge-outline-success">Approved</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Gamesverse
+              2022</span>
+
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <script>
+    function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+      }
+    }
+  </script>
+  <!-- plugins:js -->
+  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+  <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="assets/js/off-canvas.js"></script>
+  <script src="assets/js/hoverable-collapse.js"></script>
+  <script src="assets/js/misc.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="assets/js/dashboard.js"></script>
+  <!-- End custom js for this page -->
+</body>
+
+</html>

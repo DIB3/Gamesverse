@@ -29,7 +29,8 @@ function videoslive(data) {
 
     // Loop to access all rows
     for (let f of data.ressource) {
-        tab += `<div class="col-xl-3 col-lg-4 col-md-6">
+        if (x.username == "locklier") {
+            tab += `<div class="col-xl-3 col-lg-4 col-md-6">
         <div class="gen-carousel-movies-style-2 movie-grid style-2">
             <div class="gen-movie-contain">
                 <div class="gen-movie-img">
@@ -92,6 +93,7 @@ function videoslive(data) {
             </div>
         </div>
     </div>`;
+        }
     }
     // Setting innerHTML as tab variable
     document.getElementById("livesdisplay").innerHTML = tab;
